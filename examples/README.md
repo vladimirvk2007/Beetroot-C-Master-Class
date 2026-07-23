@@ -12,6 +12,11 @@
 - `etl_array_api_example.cpp` — розширений демо-приклад API для `etl::array`.
 - `etl_string_api_example.cpp` — розширений демо-приклад API для `etl::string`.
 - `etl_map_api_example.cpp` — розширений демо-приклад API для `etl::map`.
+- `Ring_buffer_C/` — приклад кільцевого буфера на C.
+- `Ring_buffer_C++/` — приклад кільцевого буфера на C++.
+- `Sort_C/` — приклад бульбашкового сортування на C.
+- `Sort_C++/` — приклад бульбашкового сортування на C++.
+- `ETL_Versions/` — ті ж задачі Ring Buffer і Sort, реалізовані через ETL.
 
 ## API довідка по контейнерах
 
@@ -51,6 +56,22 @@ g++ -std=c++17 examples/etl_string_api_example.cpp -I lib/etl/include -o example
 g++ -std=c++17 examples/etl_map_api_example.cpp -I lib/etl/include -o examples/etl_map_api_example.exe
 ```
 
+### Ring/Sort приклади
+
+```bash
+gcc -x c examples/Ring_buffer_C/main.cpp examples/Ring_buffer_C/ring_buffer.c -o examples/Ring_buffer_C/ring_c.exe
+g++ -std=c++17 examples/Ring_buffer_C++/main.cpp -o examples/Ring_buffer_C++/ring_cpp.exe
+gcc -x c examples/Sort_C/main.cpp examples/Sort_C/sort.c -o examples/Sort_C/sort_c.exe
+g++ -std=c++17 examples/Sort_C++/main.cpp -o examples/Sort_C++/sort_cpp.exe
+```
+
+### ETL версії Ring/Sort
+
+```bash
+g++ -std=c++17 examples/ETL_Versions/Ring_buffer_ETL/main.cpp -I lib/etl/include -o examples/ETL_Versions/Ring_buffer_ETL/ring_buffer_etl.exe
+g++ -std=c++17 examples/ETL_Versions/Sort_ETL/main.cpp -I lib/etl/include -o examples/ETL_Versions/Sort_ETL/sort_etl.exe
+```
+
 ## Запуск прикладів
 
 ```bash
@@ -62,6 +83,12 @@ g++ -std=c++17 examples/etl_map_api_example.cpp -I lib/etl/include -o examples/e
 ./examples/etl_array_api_example.exe
 ./examples/etl_string_api_example.exe
 ./examples/etl_map_api_example.exe
+./examples/Ring_buffer_C/ring_c.exe
+./examples/Ring_buffer_C++/ring_cpp.exe
+./examples/Sort_C/sort_c.exe
+./examples/Sort_C++/sort_cpp.exe
+./examples/ETL_Versions/Ring_buffer_ETL/ring_buffer_etl.exe
+./examples/ETL_Versions/Sort_ETL/sort_etl.exe
 ```
 
 ## Запуск через VS Code Tasks
