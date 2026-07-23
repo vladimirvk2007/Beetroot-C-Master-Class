@@ -1,0 +1,27 @@
+# Build artifacts
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.out
+
+# CMake
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+Makefile
+
+# VS Code local settings
+.vscode/*.log
+.vscode/*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
