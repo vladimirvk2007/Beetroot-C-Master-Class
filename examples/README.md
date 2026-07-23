@@ -9,6 +9,13 @@
 - `etl_string_example.cpp` — приклад роботи з `etl::string` без динамічної пам'яті.
 - `etl_map_example.cpp` — приклад роботи з `etl::map` (вставка та ітерація по значеннях).
 
+## API довідка по контейнерах
+
+- `README.array.md` — API для `etl::array`.
+- `README.vector.md` — API для `etl::vector`.
+- `README.string.md` — API для `etl::string`.
+- `README.map.md` — API для `etl::map`.
+
 ## Вимоги
 
 - Компілятор `g++` з підтримкою C++17.
