@@ -8,6 +8,10 @@
 - `etl_array_example.cpp` — приклад роботи з `etl::array` та обчисленням суми елементів.
 - `etl_string_example.cpp` — приклад роботи з `etl::string` без динамічної пам'яті.
 - `etl_map_example.cpp` — приклад роботи з `etl::map` (вставка та ітерація по значеннях).
+- `etl_vector_api_example.cpp` — розширений демо-приклад API для `etl::vector`.
+- `etl_array_api_example.cpp` — розширений демо-приклад API для `etl::array`.
+- `etl_string_api_example.cpp` — розширений демо-приклад API для `etl::string`.
+- `etl_map_api_example.cpp` — розширений демо-приклад API для `etl::map`.
 
 ## API довідка по контейнерах
 
@@ -38,6 +42,15 @@ g++ -std=c++17 examples/etl_string_example.cpp -I lib/etl/include -o examples/et
 g++ -std=c++17 examples/etl_map_example.cpp -I lib/etl/include -o examples/etl_map_example.exe
 ```
 
+### API демо-приклади
+
+```bash
+g++ -std=c++17 examples/etl_vector_api_example.cpp -I lib/etl/include -o examples/etl_vector_api_example.exe && \
+g++ -std=c++17 examples/etl_array_api_example.cpp -I lib/etl/include -o examples/etl_array_api_example.exe && \
+g++ -std=c++17 examples/etl_string_api_example.cpp -I lib/etl/include -o examples/etl_string_api_example.exe && \
+g++ -std=c++17 examples/etl_map_api_example.cpp -I lib/etl/include -o examples/etl_map_api_example.exe
+```
+
 ## Запуск прикладів
 
 ```bash
@@ -45,6 +58,10 @@ g++ -std=c++17 examples/etl_map_example.cpp -I lib/etl/include -o examples/etl_m
 ./examples/etl_array_example.exe
 ./examples/etl_string_example.exe
 ./examples/etl_map_example.exe
+./examples/etl_vector_api_example.exe
+./examples/etl_array_api_example.exe
+./examples/etl_string_api_example.exe
+./examples/etl_map_api_example.exe
 ```
 
 ## Запуск через VS Code Tasks
