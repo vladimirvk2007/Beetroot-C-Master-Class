@@ -30,7 +30,7 @@ public:
     // Налаштовує піни сегментів і вибору розряду як виходи.
     void initialize();
     // Показує цифру або підтримувану літеру; false для невідомого символу.
-    bool display(char symbol);
+    bool display(char symbol, bool decimalPoint = false);
     // Вимикає цей розряд.
     void blank();
 

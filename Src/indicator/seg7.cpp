@@ -135,7 +135,7 @@ void Seg7::initialize()
     HAL_GPIO_Init(digitPort_, &gpioInit);
 }
 
-bool Seg7::display(char symbol)
+bool Seg7::display(char symbol, bool decimalPoint)
 {
     // Спершу вимикаємо розряд, щоб не показати некоректний символ.
     blank();
@@ -146,6 +146,9 @@ bool Seg7::display(char symbol)
 
     if (rotated180_) {
         segments = rotateSegments180(segments);
+    }
+    if (decimalPoint) {
+        segments |= SegmentDp;
     }
 
     HAL_GPIO_WritePin(segmentsPort_, allSegmentsMask(), GPIO_PIN_SET);

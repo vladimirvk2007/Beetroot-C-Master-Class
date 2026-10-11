@@ -15,6 +15,7 @@ Seg7Display::Seg7Display(const Seg7DisplayConfig& config)
               config.digits[3].rotated180),
       indicators_{&first_, &second_, &third_, &fourth_},
       text_{' ', ' ', ' ', ' '},
+      decimalPoints_(0),
       activeDigit_(0)
 {
 }
@@ -44,11 +45,37 @@ bool Seg7Display::setText(const char* text)
     return true;
 }
 
+// Номер розряду задається в звичному діапазоні 1–4.
+bool Seg7Display::setDecimalPoint(uint8_t digit, bool enabled)
+{
+    if (digit < 1U || digit > 4U) {
+        return false;
+    }
+
+    const uint8_t mask = 1U << (digit - 1U);
+    if (enabled) {
+        decimalPoints_ |= mask;
+    } else {
+        decimalPoints_ &= static_cast<uint8_t>(~mask);
+    }
+    return true;
+}
+
+// Дві сусідні крапки утворюють двокрапку між розрядами 2 і 3.
+void Seg7Display::setColon(bool enabled)
+{
+    setDecimalPoint(2, enabled);
+    setDecimalPoint(3, enabled);
+}
+
 // Виводить символ на поточний розряд і переходить до наступного.
 bool Seg7Display::refresh()
 {
     blank();
-    const bool displayed = indicators_[activeDigit_]->display(text_[activeDigit_]);
+    const bool decimalPoint =
+        (decimalPoints_ & (1U << activeDigit_)) != 0;
+    const bool displayed =
+        indicators_[activeDigit_]->display(text_[activeDigit_], decimalPoint);
     activeDigit_ = (activeDigit_ + 1U) % 4U;
     return displayed;
 }

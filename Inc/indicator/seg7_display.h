@@ -62,6 +62,10 @@ public:
     void initialize();
     // Зберігає рядок рівно з чотирьох символів.
     bool setText(const char* text);
+    // Вмикає або вимикає крапку після розряду з номером 1–4.
+    bool setDecimalPoint(uint8_t digit, bool enabled);
+    // Керує двокрапкою крапками між другим і третім розрядами.
+    void setColon(bool enabled);
     // Оновлює черговий розряд; повертає false для непідтримуваного символу.
     bool refresh();
     // Вимикає всі розряди.
@@ -74,6 +78,7 @@ private:
     Seg7 fourth_;
     Seg7* indicators_[4];
     char text_[4];
+    uint8_t decimalPoints_;
     uint8_t activeDigit_;
 };
 
