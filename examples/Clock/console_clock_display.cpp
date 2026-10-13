@@ -24,7 +24,7 @@ bool ConsoleClockDisplay::refresh()
     if (!hasDisplayedTime_ || hours_ != displayedHours_ || minutes_ != displayedMinutes_ ||
         colonEnabled_ != displayedColon_)
     {
-        // Redraw in place so the blinking colon doesn't scroll the console.
+        // Перемальовуємо рядок на місці (\r), щоб двокрапка, що блимає, не прокручувала консоль
         std::cout << '\r' << std::setfill('0') << std::setw(2) << static_cast<unsigned int>(hours_)
                   << (colonEnabled_ ? ':' : ' ')
                   << std::setw(2) << static_cast<unsigned int>(minutes_) << std::flush;

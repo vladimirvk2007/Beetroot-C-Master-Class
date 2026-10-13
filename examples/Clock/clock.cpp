@@ -7,7 +7,6 @@ Clock::Clock(ClockTicker& ticker, ClockDisplay& display)
 }
 
 bool Clock::initialize()
-
 {
     ticker_.initialize();
     display_.initialize();
@@ -21,6 +20,7 @@ bool Clock::initialize()
 
 bool Clock::setTime(uint8_t hours, uint8_t minutes)
 {
+    // Відхиляємо некоректний час
     if (hours > 23 || minutes > 59)
     {
         return false;
@@ -30,6 +30,7 @@ bool Clock::setTime(uint8_t hours, uint8_t minutes)
     minutes_ = minutes;
     seconds_ = 0;
 
+    // До ініціалізації дисплей не чіпаємо
     if (!initialized_)
     {
         return true;
@@ -50,10 +51,12 @@ bool Clock::update()
     bool success = true;
     if (ticker_.consumeSecondTick())
     {
+        // Двокрапка блимає раз на секунду
         colonOn_ = !colonOn_;
         display_.setColon(colonOn_);
 
         ++seconds_;
+        // Дисплей оновлюється лише при зміні хвилини
         if (seconds_ == 60)
         {
             seconds_ = 0;

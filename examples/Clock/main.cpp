@@ -6,6 +6,7 @@
 
 int main()
 {
+    // Збираємо годинник із реального тікера та консольного дисплея
     RealTimeTicker ticker;
     ConsoleClockDisplay display;
     Clock clock(ticker, display);
@@ -15,6 +16,7 @@ int main()
         return 1;
     }
 
+    // Основний цикл: опитуємо годинник кожні 10 мс
     while (true)
     {
         if (!clock.update())

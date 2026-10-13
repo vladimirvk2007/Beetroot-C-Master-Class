@@ -13,11 +13,13 @@ bool RealTimeTicker::consumeSecondTick()
         return false;
     }
 
+    // Секунда ще не минула
     if (std::chrono::steady_clock::now() < nextTick_)
     {
         return false;
     }
 
+    // Зсуваємо від попереднього моменту, щоб не накопичувати похибку
     nextTick_ += std::chrono::seconds(1);
     return true;
 }
