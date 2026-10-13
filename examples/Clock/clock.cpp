@@ -7,6 +7,7 @@ Clock::Clock(ClockTicker& ticker, ClockDisplay& display)
 }
 
 bool Clock::initialize()
+
 {
     ticker_.initialize();
     display_.initialize();

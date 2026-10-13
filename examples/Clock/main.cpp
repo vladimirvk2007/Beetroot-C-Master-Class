@@ -1,34 +1,9 @@
 #include "clock.h"
+#include "real_time_ticker.h"
 
 #include <iomanip>
 #include <iostream>
-
-class DemoTicker : public ClockTicker
-{
-public:
-    void initialize() override
-    {
-    }
-
-    bool consumeSecondTick() override
-    {
-        if (pendingTicks_ == 0)
-        {
-            return false;
-        }
-
-        --pendingTicks_;
-        return true;
-    }
-
-    void addTicks(unsigned int count)
-    {
-        pendingTicks_ += count;
-    }
-
-private:
-    unsigned int pendingTicks_ = 0;
-};
+#include <windows.h>
 
 class ConsoleClockDisplay : public ClockDisplay
 {
@@ -84,7 +59,7 @@ private:
 
 int main()
 {
-    DemoTicker ticker;
+    RealTimeTicker ticker;
     ConsoleClockDisplay display;
     Clock clock(ticker, display);
 
@@ -93,14 +68,13 @@ int main()
         return 1;
     }
 
-    ticker.addTicks(60);
-    for (unsigned int second = 0; second < 60; ++second)
+    while (true)
     {
         if (!clock.update())
         {
             return 1;
         }
-    }
 
-    return 0;
+        Sleep(10);
+    }
 }
