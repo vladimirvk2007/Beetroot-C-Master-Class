@@ -21,17 +21,17 @@ void ConsoleClockDisplay::setColon(bool enabled)
 
 bool ConsoleClockDisplay::refresh()
 {
-    if (!hasDisplayedTime_ || hours_ != displayedHours_ || minutes_ != displayedMinutes_)
+    if (!hasDisplayedTime_ || hours_ != displayedHours_ || minutes_ != displayedMinutes_ ||
+        colonEnabled_ != displayedColon_)
     {
-        std::cout << std::setfill('0') << std::setw(2) << static_cast<unsigned int>(hours_);
-        if (colonEnabled_)
-        {
-            std::cout << ':';
-        }
-        std::cout << std::setw(2) << static_cast<unsigned int>(minutes_) << '\n';
+        // Redraw in place so the blinking colon doesn't scroll the console.
+        std::cout << '\r' << std::setfill('0') << std::setw(2) << static_cast<unsigned int>(hours_)
+                  << (colonEnabled_ ? ':' : ' ')
+                  << std::setw(2) << static_cast<unsigned int>(minutes_) << std::flush;
 
         displayedHours_ = hours_;
         displayedMinutes_ = minutes_;
+        displayedColon_ = colonEnabled_;
         hasDisplayedTime_ = true;
     }
 

@@ -21,6 +21,7 @@ private:
     uint8_t hours_ = 0;
     uint8_t minutes_ = 0;
     uint8_t seconds_ = 0;
+    bool colonOn_ = true;
     bool initialized_ = false;
 };
 

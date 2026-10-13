@@ -11,7 +11,8 @@ bool Clock::initialize()
 {
     ticker_.initialize();
     display_.initialize();
-    display_.setColon(true);
+    colonOn_ = true;
+    display_.setColon(colonOn_);
     initialized_ = true;
     const bool timeSet = display_.setTime(hours_, minutes_);
     const bool refreshed = display_.refresh();
@@ -49,6 +50,9 @@ bool Clock::update()
     bool success = true;
     if (ticker_.consumeSecondTick())
     {
+        colonOn_ = !colonOn_;
+        display_.setColon(colonOn_);
+
         ++seconds_;
         if (seconds_ == 60)
         {

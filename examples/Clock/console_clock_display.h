@@ -20,6 +20,7 @@ private:
     uint8_t displayedHours_ = 0;
     uint8_t displayedMinutes_ = 0;
     bool colonEnabled_ = true;
+    bool displayedColon_ = true;
     bool hasDisplayedTime_ = false;
 };
 
