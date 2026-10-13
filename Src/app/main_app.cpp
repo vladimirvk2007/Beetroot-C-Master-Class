@@ -11,9 +11,9 @@ static I2C_HandleTypeDef hi2c1;
 static OledClockDisplay oledClock(&hi2c1);
 
 // Також доступний 7-сегментний годинниковий дисплей:
-// static Seg7ClockDisplay seg7Clock;
+static Seg7ClockDisplay seg7Clock;
 
-static Clock clock(ticker, oledClock);
+static Clock clock(ticker, seg7Clock);
 
 extern "C" void main_cpp() {
     clock.initialize();
@@ -23,12 +23,7 @@ extern "C" void main_cpp() {
 
     while(1) {
         clock.update();
-        HAL_Delay(10);
-
-        if ((HAL_GetTick() - lastLedToggle) >= 500U) {
-            HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-            lastLedToggle = HAL_GetTick();
-        }
+        HAL_Delay(2);
     }
 }
 
