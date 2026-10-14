@@ -11,13 +11,14 @@
 ## Збірка
 
 ```bash
-gcc -x c examples/Ring_buffer_C/main.cpp examples/Ring_buffer_C/ring_buffer.c -o examples/Ring_buffer_C/ring_c.exe
+cd examples/Ring_buffer_C
+make
 ```
 
 ## Запуск
 
 ```bash
-./examples/Ring_buffer_C/ring_c.exe
+./ring_c.exe
 ```
 
 ## Що демонструє

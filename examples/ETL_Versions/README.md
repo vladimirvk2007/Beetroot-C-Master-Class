@@ -10,9 +10,8 @@
 ## Збірка
 
 ```bash
-g++ -std=c++17 examples/ETL_Versions/Ring_buffer_ETL/main.cpp -I lib/etl/include -o examples/ETL_Versions/Ring_buffer_ETL/ring_buffer_etl.exe
-
-g++ -std=c++17 examples/ETL_Versions/Sort_ETL/main.cpp -I lib/etl/include -o examples/ETL_Versions/Sort_ETL/sort_etl.exe
+make -C examples/ETL_Versions/Ring_buffer_ETL
+make -C examples/ETL_Versions/Sort_ETL
 ```
 
 ## Запуск

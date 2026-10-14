@@ -30,48 +30,38 @@
 - Компілятор `g++` з підтримкою C++17.
 - ETL у директорії `../lib/etl/include`.
 
-## Швидка збірка (з кореня проєкту)
+## Збірка (через Makefile)
 
-### Один приклад (vector)
+Усі приклади збираються за допомогою `make` (на Windows/MinGW — `mingw32-make`). Додатковий шлях до ETL можна задати змінною `ETL_INC` (за замовчуванням `../lib/etl/include`).
 
-```bash
-g++ -std=c++17 examples/etl_vector_example.cpp -I lib/etl/include -o examples/etl_vector_example.exe
-```
-
-### Усі приклади
+### Усі приклади (з директорії `examples`)
 
 ```bash
-g++ -std=c++17 examples/etl_vector_example.cpp -I lib/etl/include -o examples/etl_vector_example.exe && \
-g++ -std=c++17 examples/etl_array_example.cpp -I lib/etl/include -o examples/etl_array_example.exe && \
-g++ -std=c++17 examples/etl_string_example.cpp -I lib/etl/include -o examples/etl_string_example.exe && \
-g++ -std=c++17 examples/etl_map_example.cpp -I lib/etl/include -o examples/etl_map_example.exe
+cd examples
+make          # ETL-приклади + усі підпроєкти (Clock, Ring_buffer_*, Sort_*, ETL_Versions/*)
+make clean    # видалити зібрані файли
 ```
 
-### API демо-приклади
+### Один приклад
 
 ```bash
-g++ -std=c++17 examples/etl_vector_api_example.cpp -I lib/etl/include -o examples/etl_vector_api_example.exe && \
-g++ -std=c++17 examples/etl_array_api_example.cpp -I lib/etl/include -o examples/etl_array_api_example.exe && \
-g++ -std=c++17 examples/etl_string_api_example.cpp -I lib/etl/include -o examples/etl_string_api_example.exe && \
-g++ -std=c++17 examples/etl_map_api_example.cpp -I lib/etl/include -o examples/etl_map_api_example.exe
+cd examples
+make etl_vector_example.exe
+make etl_map_api_example.exe ETL_INC=/path/to/etl/include
 ```
 
-### Ring/Sort приклади
+### Підпроєкти
 
 ```bash
-gcc -x c examples/Ring_buffer_C/main.cpp examples/Ring_buffer_C/ring_buffer.c -o examples/Ring_buffer_C/ring_c.exe
-g++ -std=c++17 examples/Ring_buffer_C++/main.cpp -o examples/Ring_buffer_C++/ring_cpp.exe
-gcc -x c examples/Sort_C/main.cpp examples/Sort_C/sort.c -o examples/Sort_C/sort_c.exe
-g++ -std=c++17 examples/Sort_C++/main.cpp -o examples/Sort_C++/sort_cpp.exe
+make -C examples/Ring_buffer_C
+make -C examples/Ring_buffer_C++
+make -C examples/Sort_C
+make -C examples/Sort_C++
+make -C examples/ETL_Versions/Ring_buffer_ETL
+make -C examples/ETL_Versions/Sort_ETL
 ```
 
-### ETL версії Ring/Sort
-
-```bash
-g++ -std=c++17 examples/ETL_Versions/Ring_buffer_ETL/main.cpp -I lib/etl/include -o examples/ETL_Versions/Ring_buffer_ETL/ring_buffer_etl.exe
-g++ -std=c++17 examples/ETL_Versions/Sort_ETL/main.cpp -I lib/etl/include -o examples/ETL_Versions/Sort_ETL/sort_etl.exe
-```
-
+Кожен Makefile має цілі `all` (за замовчуванням) і `clean`. Корінь проєкту також має `Makefile` для `main.cpp` (`make`, `make run`, `make clean`).
 ## Запуск прикладів
 
 ```bash

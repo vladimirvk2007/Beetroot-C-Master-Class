@@ -10,13 +10,14 @@
 ## Збірка
 
 ```bash
-g++ -std=c++17 examples/Ring_buffer_C++/main.cpp -o examples/Ring_buffer_C++/ring_cpp.exe
+cd examples/Ring_buffer_C++
+make
 ```
 
 ## Запуск
 
 ```bash
-./examples/Ring_buffer_C++/ring_cpp.exe
+./ring_cpp.exe
 ```
 
 ## Що демонструє

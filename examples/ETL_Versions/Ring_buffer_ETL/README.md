@@ -14,13 +14,14 @@
 ## Збірка
 
 ```bash
-g++ -std=c++17 examples/ETL_Versions/Ring_buffer_ETL/main.cpp -I lib/etl/include -o examples/ETL_Versions/Ring_buffer_ETL/ring_buffer_etl.exe
+cd examples/ETL_Versions/Ring_buffer_ETL
+make
 ```
 
 ## Запуск
 
 ```bash
-./examples/ETL_Versions/Ring_buffer_ETL/ring_buffer_etl.exe
+./ring_buffer_etl.exe
 ```
 
 ## Що демонструє

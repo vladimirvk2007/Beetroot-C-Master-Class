@@ -15,13 +15,14 @@
 ## Збірка
 
 ```bash
-g++ -std=c++17 examples/ETL_Versions/Sort_ETL/main.cpp -I lib/etl/include -o examples/ETL_Versions/Sort_ETL/sort_etl.exe
+cd examples/ETL_Versions/Sort_ETL
+make
 ```
 
 ## Запуск
 
 ```bash
-./examples/ETL_Versions/Sort_ETL/sort_etl.exe
+./sort_etl.exe
 ```
 
 ## Що демонструє

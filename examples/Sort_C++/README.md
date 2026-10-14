@@ -10,13 +10,14 @@
 ## Збірка
 
 ```bash
-g++ -std=c++17 examples/Sort_C++/main.cpp -o examples/Sort_C++/sort_cpp.exe
+cd examples/Sort_C++
+make
 ```
 
 ## Запуск
 
 ```bash
-./examples/Sort_C++/sort_cpp.exe
+./sort_cpp.exe
 ```
 
 ## Що демонструє

@@ -11,13 +11,14 @@
 ## Збірка
 
 ```bash
-gcc -x c examples/Sort_C/main.cpp examples/Sort_C/sort.c -o examples/Sort_C/sort_c.exe
+cd examples/Sort_C
+make
 ```
 
 ## Запуск
 
 ```bash
-./examples/Sort_C/sort_c.exe
+./sort_c.exe
 ```
 
 ## Що демонструє
