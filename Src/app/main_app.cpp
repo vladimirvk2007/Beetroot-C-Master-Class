@@ -1,6 +1,7 @@
 #include "main.h"
 #include "clock/clock.h"
 #include "clock/real_clock_ticker.h"
+#include "clock/console_clock_display.h"
 #include "indicator/oled_clock_display.h"
 #include "indicator/seg7_clock_display.h"
 
@@ -13,7 +14,10 @@ static OledClockDisplay oledClock(&hi2c1);
 // Також доступний 7-сегментний годинниковий дисплей:
 static Seg7ClockDisplay seg7Clock;
 
-static Clock clock(ticker, seg7Clock);
+// Консольний годинниковий дисплей:
+static ConsoleClockDisplay consoleClock;
+
+static Clock clock(ticker, consoleClock);
 
 extern "C" void main_cpp() {
     clock.initialize();
@@ -26,5 +30,4 @@ extern "C" void main_cpp() {
         HAL_Delay(2);
     }
 }
-
 
